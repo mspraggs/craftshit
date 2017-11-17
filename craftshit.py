@@ -1,7 +1,7 @@
 import json
 import random
 
-from flask import Flask
+from flask import Flask, current_app
 app = Flask(__name__)
 
 
@@ -196,11 +196,17 @@ def name():
     
 
 @app.route('/')
-def hello_world():
+def index():
     """Main app entry point"""
+    return current_app.send_static_file("index.html")
+
+@app.route("/beer/")
+def beer():
+    """REST interface to get a random beer"""
     wrapper = "update({})"
     return wrapper.format(
         json.dumps({'name': name(), 'desc': description()}))
+    
 
 if __name__ == "__main__":
 
