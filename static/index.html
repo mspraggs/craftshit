@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Craft Shit!</title>
+
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Cutive+Mono"
+          rel="stylesheet">
+  </head>
+  <body>
+
+    <div id="wrapper" class="center">
+      <div>
+        <h1 id="title"></h1>
+        <p id="desc"></p>
+      </div>
+      <div id="update" class="center">Generate</div>
+    </div>
+
+    <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function update(data) {
+        $("#title").html(data.title);
+        $("#title").html("Some beer");
+        $("#desc").html(data.desc);
+      }
+
+      function get_data() {
+        $.ajax({
+          url: "http://127.0.0.1:5000",
+          type: "PUT",
+          dataType: "jsonp",
+          crossDomain: true,
+        });
+      }
+      
+      $(function() {
+        $("#update").click(get_data);
+        $(document).ready(get_data);
+      });
+    </script>
+  </body>
+</html>
