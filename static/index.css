@@ -20,7 +20,7 @@ p {
 
 #wrapper {
     max-width: 600px;
-    background-image: url("texture.jpg");
+    background-image: url("paper.jpg");
     padding: 20px;
     box-shadow: 1px 1px 5px 1px #111;
 }
